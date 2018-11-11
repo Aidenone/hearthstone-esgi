@@ -8,6 +8,14 @@
 	{% for card in cards.all %}
  		<li><div id="yes-drop {{card.id}}" class="drag-drop"> {{card.name}} </div></li>
 	{%endfor%}
+
+	<form method="POST" action="">	
+		<select multiple>
+		{% for card in cards.all %}
+			<option value="{{card.id}}">{{card.name}}</option>
+		{%endfor%}
+	  </select>
+	</form>
 	<div id="inner-dropzone" class="dropzone">Game AREA</div>
 {% else %}
   <p>You are not logged in</p>
