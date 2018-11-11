@@ -70,6 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'heartstone.wsgi.application'
 
+PROJECT_DIR = os.path.dirname(__file__)
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -123,6 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.abspath(__file__), 'static')
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, 'static'),
+)
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
