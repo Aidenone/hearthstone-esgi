@@ -5,8 +5,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-	{% for article in articles.all %}
- 		<li><div id="yes-drop {{article.id}}" class="drag-drop"> {{article.name}} </div></li>
+	{% for card in cards.all %}
+ 		<li><div id="yes-drop {{card.id}}" class="drag-drop"> {{card.name}} </div></li>
 	{%endfor%}
 	<div id="inner-dropzone" class="dropzone">Game AREA</div>
 {% else %}

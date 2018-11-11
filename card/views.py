@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from card.models import Card
 
 # Create your views here.
-def list_cards(request):
-	articles = "test"
+def create_deck(request):
+	cards = Card.objects.all()
 	return render(request,
-	"card/list_cards.html",
+	"card/create_deck.html",
 	{
-	"articles" : articles
+	"cards" : cards
 	})
