@@ -7,19 +7,21 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+    restart: always
     depends_on:
       - db
+    links:
+      - db:db
 
   db:
     image: postgres
-    restart: always
     ports:
-    - "5432:5432"
+      - "5432:5432"
+    restart: always
     environment:
       POSTGRES_PASSWORD: test
       POSTGRES_USER: test
       POSTGRES_DB: hearthstone
-
   adminer:
     image: adminer
     restart: always
