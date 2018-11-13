@@ -5,21 +5,26 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-	{% for card in cards.all %}
- 		<li><div id="yes-drop {{card.id}}" class="drag-drop"> {{card.name}} </div></li>
-	{%endfor%}
 
-	<form method="POST" action="">	
-		<select multiple>
+{{test}}
+
+	<form method="POST" action="">
+		{% csrf_token %}
+		<label for="deck_name">Nom du deck :</label>
+		<input type="text" name="deck_name" id="deck_name">
+		<select multiple name="cards" id="cards">
 		{% for card in cards.all %}
 			<option value="{{card.id}}">{{card.name}}</option>
 		{%endfor%}
 	  </select>
+	  <input type="submit" value="valider">
 	</form>
-	<div id="inner-dropzone" class="dropzone">Game AREA</div>
+
 {% else %}
+
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a>
+
 {% endif %}
   
 </div>

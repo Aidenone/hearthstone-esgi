@@ -40,7 +40,6 @@
       // remove the drop feedback style
       event.target.classList.remove('drop-target');
       event.relatedTarget.classList.remove('can-drop');
-      event.relatedTarget.textContent = 'Card';
     },
     ondrop: function (event) {
       event.relatedTarget.textContent = 'Dropped';
