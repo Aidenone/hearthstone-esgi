@@ -31,7 +31,7 @@ def show_deck(request):
 		current_user = request.user
 
 	decks = Deck.objects.filter(id_user=current_user.id)
-	
+
 	return render(request,
 	"card/show_deck.html",
 	{

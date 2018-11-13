@@ -6,8 +6,6 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-{{test}}
-
 	<form method="POST" action="">
 		{% csrf_token %}
 		<label for="deck_name">Nom du deck :</label>
