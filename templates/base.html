@@ -15,6 +15,11 @@
 </head>
 <body>
   <main>
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">logout</a>
+      <a href="/card/create/deck">Créer un deck</a>
+      <a href="/card/show/decks">Voir mes decks</a>
+    {% endif %}
     {% block content %}
     {% endblock %}
   </main>
