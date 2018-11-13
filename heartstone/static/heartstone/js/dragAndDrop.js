@@ -45,27 +45,16 @@
       // remove the drop feedback style
       event.target.classList.remove('drop-target');
       event.relatedTarget.classList.remove('can-drop');
-      event.relatedTarget.textContent = 'Card';
     },
     ondrop: function (event) {
       //event.relatedTarget.textContent = 'Dropped';
       idCard = event.relatedTarget.id;
-      console.log(idCard);
       dataCard['deck'].push({"idCard":idCard});
       
       
       console.log(dataCard);
 
-       $.ajax({
-        url: 'views.py',
-        data: dataCard,
-        dataType: 'json',
-        success: function (data) {
-          
-            alert("data send success");
-          
-        }
-      }); 
+       
     },
     ondropdeactivate: function (event) {
       // remove active dropzone feedback
@@ -86,3 +75,14 @@
       onmove: dragMoveListener,
     });
     
+    $( '#submit' ).click(function() {
+      $.ajax({
+        type: 'POST',
+        url: 'card/create/deck',
+        data: dataCard,
+        dataType: 'json',
+        success: function (data) {          
+            alert("data send success");          
+        }
+      }); 
+    });
