@@ -1,0 +1,34 @@
+<!-- templates/card.html-->
+{% extends 'base.html' %}
+
+{% block title %}Decks{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h1>Mes decks :</h1>
+
+	<ul>
+		{% for deck in decks %}
+			<li>{{deck.name}} :</li>
+			<ul>
+				{% for card in deck.cards.all %}
+					<li>
+						{{card.name}}
+					</li>
+				{%endfor%}
+			</ul>
+		{%endfor%}
+	</ul>
+
+{% else %}
+
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+
+{% endif %}
+  
+</div>
+{% endblock %}
+
+
+

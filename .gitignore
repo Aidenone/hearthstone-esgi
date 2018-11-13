@@ -1,1 +1,7 @@
 .idea/*
+heartstone/settings.py
+accounts/__pycache__/*
+card/__pycache__/*
+heartstone/__pycache__/*
+card/migrations/__pycache__/*
+
