@@ -1,6 +1,6 @@
 from django.shortcuts import render
+from card.forms import CardForm
 from card.models import Card, Deck
-from pprint import pprint
 import json
 
 # Create your views here.
@@ -29,6 +29,17 @@ def create_deck(request):
 	"cards" : cards
 	})
 
+def create_card(request):
+    if request.method == "POST":
+        form = CardForm(request.POST)
+        if form.is_valid():
+            card = form.save(commit=False)
+            card.save()
+        return render(request, 'card/create_deck.html')
+    else:
+        form = CardForm()
+    return render(request, 'card/create_card.html', {'form': form})
+
 def show_deck(request):
 
 	if request.user :
@@ -39,5 +50,5 @@ def show_deck(request):
 	return render(request,
 	"card/show_deck.html",
 	{
-	"decks" : decks
+	    "decks" : decks
 	})
