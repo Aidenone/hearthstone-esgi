@@ -20,6 +20,13 @@
 	  <input type="submit" value="valider">
 	</form>
 
+	{% for card in cards.all %}
+			<div id="{{card.id}}" class="drag-drop">{{card.name}}</div>
+		{%endfor%}
+	
+<div id="inner-dropzone" class="dropzone">Game AREA</div>
+<input type="submit" id="submit" value="Créer le deck"> 
+
 {% else %}
 
   <p>You are not logged in</p>
