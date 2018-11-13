@@ -14,10 +14,15 @@
     target.setAttribute('data-y', y);
   }
   
-  
+  dataCard = {
+    "deck": [{
+              
+            }
+        ]};
+
   interact('.dropzone').dropzone({
     // only accept elements matching this CSS selector
-    accept: '#yes-drop',
+    accept: '.drag-drop',
     // Require a 75% element overlap for a drop to be possible
     overlap: 0.75,
   
@@ -43,7 +48,24 @@
       event.relatedTarget.textContent = 'Card';
     },
     ondrop: function (event) {
-      event.relatedTarget.textContent = 'Dropped';
+      //event.relatedTarget.textContent = 'Dropped';
+      idCard = event.relatedTarget.id;
+      console.log(idCard);
+      dataCard['deck'].push({"idCard":idCard});
+      
+      
+      console.log(dataCard);
+
+       $.ajax({
+        url: 'views.py',
+        data: dataCard,
+        dataType: 'json',
+        success: function (data) {
+          
+            alert("data send success");
+          
+        }
+      }); 
     },
     ondropdeactivate: function (event) {
       // remove active dropzone feedback
