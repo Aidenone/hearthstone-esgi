@@ -14,12 +14,7 @@ function dragMoveListener (event) {
   target.setAttribute('data-y', y);
 }
 
-dataCard = {
-  "deck": [{
-            
-          }
-      ]};
-
+dataCard = [];
 interact('.dropzone').dropzone({
   // only accept elements matching this CSS selector
   accept: '.drag-drop',
@@ -49,7 +44,7 @@ interact('.dropzone').dropzone({
   ondrop: function (event) {
     //event.relatedTarget.textContent = 'Dropped';
     idCard = event.relatedTarget.id;
-    dataCard['deck'].push({"idCard":idCard});
+    dataCard.push(idCard);
     
     
     console.log(dataCard);
@@ -74,15 +69,36 @@ interact('.drag-drop')
     autoScroll: true,
     onmove: dragMoveListener,
   });
-  
-  $( '#submit' ).click(function() {
+
+  function getCookie(c_name)
+  {
+      if (document.cookie.length > 0)
+      {
+          c_start = document.cookie.indexOf(c_name + "=");
+          if (c_start != -1)
+          {
+              c_start = c_start + c_name.length + 1;
+              c_end = document.cookie.indexOf(";", c_start);
+              if (c_end == -1) c_end = document.cookie.length;
+              return unescape(document.cookie.substring(c_start,c_end));
+          }
+      }
+      return "";
+   }
+ 
+ $(document).ready(function(){
+    $( '#submit' ).click(function() {
+    $.ajaxSetup({
+        headers: { "X-CSRFToken": getCookie("csrftoken") }
+    });
     $.ajax({
       type: 'POST',
-      url: 'card/create/deck',
-      data: dataCard,
-      dataType: 'json',
+      url: '/card/create/deck/',
+      data: { 'deck' : dataCard },
       success: function (data) {          
           alert("data send success");          
       }
     }); 
   });
+ });
+  
