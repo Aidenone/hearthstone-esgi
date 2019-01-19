@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'hearthstone',
         'USER': 'test',
         'PASSWORD': 'test',
-        'HOST': 'db',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
