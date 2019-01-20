@@ -1,0 +1,31 @@
+<!-- templates/card/view_collection.html-->
+{% extends 'base.html' %}
+
+{% block title %}Decks{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h1>Ma collection :</h1>
+
+		{% for collection in collections %}
+			<ul>
+				{% for card in collection.cards.all %}
+					<li>
+						<img src="{{card.image}}">
+					</li>
+				{%endfor%}
+			</ul>
+		{%endfor%}
+
+{% else %}
+
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+
+{% endif %}
+  
+</div>
+{% endblock %}
+
+
+
