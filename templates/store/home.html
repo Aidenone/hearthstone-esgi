@@ -1,0 +1,29 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Store{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="store">
+        <div class="sale">
+            <p>
+                <a href="{% url 'sale' %}">
+                    Echange et vente de cartes
+                </a>
+            </p>
+        </div>
+        <div class="purchase">
+            <a href="{% url 'purchase' %}">
+                Achat de pack
+            </a>
+        </div>
+    </div>
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+{% endblock %}
+
+
+

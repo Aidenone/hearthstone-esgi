@@ -6,7 +6,9 @@
 {% block content %}
 {% if user.is_authenticated %}
 	{% for card in cards.all %}
-		<div id="{{card.id}}" class="drag-drop">{{card.name}}</div>
+		<div id="{{card.id}}" class="drag-drop">
+			<img src="{{card.image}}" alt="{{card.name}}" width="50">
+		</div>
 	{%endfor%}
 	
 	<div id="inner-dropzone" class="dropzone">Game AREA</div>

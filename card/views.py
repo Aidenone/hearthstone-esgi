@@ -15,7 +15,7 @@ def create_deck(request):
 
 	if request.method == 'POST': 
 		current_user = request.user
-		deck_name = "test drag and drop"
+		deck_name = "Nom du Deck"
 		deck_instance = Deck.objects.create(name=deck_name, id_user=current_user.id)
 		deck_instance.cards.set(card_ids)
 
@@ -82,7 +82,7 @@ def import_cards(request):
 									artist=card['artist'] if 'artist' in card else None,
 								)
 
-	return HttpResponse("test");
+	return HttpResponse("Les cartes ont bien été inséré");
 
 
 
