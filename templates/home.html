@@ -4,12 +4,267 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-<p><a href="{% url 'logout' %}">logout</a></p>
+<section class="content-wrap">
 
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
+    <!-- Banner -->
+    <section class="youplay-banner banner-top youplay-banner-parallax">
+      <div class="image" style="background-image: url('assets/images/banner-bg.jpg')">
+      </div>
+
+      <div class="info">
+        <div>
+          <div class="container">
+            <h1>Diablo III: <br>Reaper of Souls</h1>
+            <em>"One of the best grind games"</em>
+            <br>
+            <br>
+            <br>
+            <a class="btn btn-lg" href="#!">Purchase</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /Banner -->
+
+
+      <!-- Features -->
+      <h2 class="container h1">Quel jeu ! </h2>
+      <section class="youplay-features container mnb-30">
+        <div class="col-sm-4">
+          <div class="feature angled-bg">
+            <i class="fa fa-gamepad"></i>
+            <h3>Dynamic Fights</h3>
+            <div>
+              The most dynamic fights will not make you bored
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="feature angled-bg">
+            <i class="fa fa-heartbeat"></i>
+            <h3>Incredible Atmosphere</h3>
+            <div>
+              You will be immersed in the dark atmosphere until the end of the story
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="feature angled-bg">
+            <i class="fa fa-hand-rock-o"></i>
+            <h3>Play w/ Friends</h3>
+            <div>
+              Kick ass your friends right in the game with ease
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Features -->
+
+    <!-- Specials -->
+    <h2 class="container h1">Les cartes en vente</h2>
+    <div class="youplay-carousel">
+      <a class="angled-img" href="#!">
+        <div class="img img-offset">
+          <img src="assets/images/game-dark-souls-ii-500x375.jpg" alt="">
+          <div class="badge bg-default">
+            -20%
+          </div>
+        </div>
+        <div class="bottom-info">
+          <h4>Dark Souls II</h4>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="price">$39.99 <sup><del>$49.99</del></sup>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a class="angled-img" href="#!">
+        <div class="img img-offset">
+          <img src="assets/images/game-lords-of-the-fallen-500x375.jpg" alt="">
+          <div class="badge bg-default">
+            -25%
+          </div>
+        </div>
+        <div class="bottom-info">
+          <h4>Lords of the Fallen</h4>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="price">$26.25 <sup><del>$35.00</del></sup>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a class="angled-img" href="#!">
+        <div class="img img-offset">
+          <img src="assets/images/game-dragons-dogma-500x375.jpg" alt="">
+          <div class="badge bg-default">
+            -30%
+          </div>
+        </div>
+        <div class="bottom-info">
+          <h4>Dragons Dogma</h4>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="price">$34.99 <sup><del>$49.99</del></sup>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a class="angled-img" href="#!">
+        <div class="img img-offset">
+          <img src="assets/images/game-soul-sacrifice-500x375.jpg" alt="">
+          <div class="badge bg-success">
+            -100%
+          </div>
+        </div>
+        <div class="bottom-info">
+          <h4>Soul Sacrifice</h4>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="price"><span class="text-success">FREE!</span>  <sup><del>$29.99</del></sup>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- /Specials -->
+
+    <!-- Testimonials -->
+      <section class="youplay-banner youplay-banner-parallax mt-60" id="testimonials">
+        <div class="image" style="background-image: url('assets/images/game-bloodborne-2-1920x1080.jpg');" data-speed="-0.2">
+        </div>
+
+        <div class="info">
+          <div>
+            <div class="container">
+              <h2 class="align-center">What Gamers are Saying</h2>
+              <br>
+
+              <div class="row testimonials vertical-gutter">
+                <div class="col-md-4">
+                  <blockquote>
+                    <p class="clients-words">
+                      Purus purus penatibus tempus est risus elit convallis ultrices adipiscing et mollis fames vivamus.
+                    </p>
+                    <small class="author-name">Adrian Ray</small>
+                    <img class="img-circle" alt="Adrian Ray" src="assets/images/avatar-user-2.png" />
+                  </blockquote>
+                </div>
+                <div class="col-md-4">
+                  <blockquote>
+                    <p class="clients-words">
+                      Lacus Ut varius viverra vestibulum eleifend consectetuer proin accumsan pretium dis ultrices, hendrerit platea. Suspendisse Nunc. Ligula phasellus iaculis torquent.
+                    </p>
+                    <small class="author-name">Salvador Moore</small>
+                    <img class="img-circle" alt="Salvador Moore" src="assets/images/avatar-user-3.png" />
+                  </blockquote>
+                </div>
+                <div class="col-md-4">
+                  <blockquote>
+                    <p class="clients-words">
+                      Curae, sodales facilisi, lacus fringilla ridiculus cras, sed, class class. Class per faucibus eget Aliquam quam interdum vehicula Pretium dolor. Nunc nascetur urna phasellus.
+                    </p>
+                    <small class="author-name">Clayton Fields</small>
+                    <img class="img-circle" alt="Clayton Fields" src="assets/images/avatar-user-4.png" />
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Testimonials -->
+
+    <!-- Footer -->
+    <footer class="youplay-footer-parallax">
+      <div class="wrapper" style="background-image: url('assets/images/footer-bg.jpg')">
+        <!-- Social Buttons -->
+        <div class="social">
+          <div class="container">
+            <h3>Connect socially with <strong>youplay</strong></h3>
+
+            <div class="social-icons">
+              <div class="social-icon">
+                <a href="#!">
+                  <i class="fa fa-facebook-square"></i>
+                  <span>Like on Facebook</span>
+                </a>
+              </div>
+              <div class="social-icon">
+                <a href="#!">
+                  <i class="fa fa-twitter-square"></i>
+                  <span>Follow on Twitter</span>
+                </a>
+              </div>
+              <div class="social-icon">
+                <a href="#!">
+                  <i class="fa fa-twitch"></i>
+                  <span>Watch on Twitch</span>
+                </a>
+              </div>
+              <div class="social-icon">
+                <a href="#!">
+                  <i class="fa fa-youtube-square"></i>
+                  <span>Watch on Youtube</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Social Buttons -->
+
+        <!-- Copyright -->
+        <div class="copyright">
+          <div class="container">
+            <strong>Hearthstone ESGI</strong> &copy; 2019.
+          </div>
+        </div>
+        <!-- /Copyright -->
+
+      </div>
+    </footer>
+    <!-- /Footer -->
+
+  </section>
 {% endblock %}

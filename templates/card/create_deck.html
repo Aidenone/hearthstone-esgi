@@ -5,12 +5,27 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-	{% for card in cards.all %}
-		<div id="{{card.id}}" class="drag-drop">{{card.name}}</div>
-	{%endfor%}
+
+<!--<div class="container">
+		<div class="row">
+		  <div class="col">
+			  <div class="cardsList">-->
+			{% for card in cards.all %}
+				<div id="{{card.id}}" class="drag-drop">{{card.name}}</div>
+			{%endfor%}
+				<!--</div>
+		  </div>
+		  <div class="col">-->
+				<div id="inner-dropzone"  class="dropzone">Ajoute tes cartes ici</div>
+				<input type="submit" id="test" value="Créer le deck">
+		  <!--</div>
+		</div>
+		
+	  </div>-->
+	  
 	
-	<div id="inner-dropzone" class="dropzone">Game AREA</div>
-	<input type="submit" id="submit" value="Créer le deck">
+	
+	
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a>
