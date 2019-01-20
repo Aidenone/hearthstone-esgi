@@ -1,0 +1,20 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Sell{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <div>
+        <div class="echange">
+            <p>Echange et vente de cartes</p>
+        </div>
+    </div>
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+{% endblock %}
+
+
+

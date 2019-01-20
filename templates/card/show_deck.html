@@ -10,10 +10,10 @@
 	<ul>
 		{% for deck in decks %}
 			<li>{{deck.name}} :</li>
-			<ul>
+			<ul class="deck_cards">
 				{% for card in deck.cards.all %}
 					<li>
-						{{card.name}}
+						<img src="{{card.image}}" alt="{{card.name}}" width="50">
 					</li>
 				{%endfor%}
 			</ul>

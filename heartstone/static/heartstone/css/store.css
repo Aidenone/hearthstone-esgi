@@ -1,0 +1,9 @@
+.store {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.store div {
+    flex: 1;
+    text-align: center;
+}
