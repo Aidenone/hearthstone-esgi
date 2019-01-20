@@ -2,6 +2,9 @@ from django.shortcuts import render
 from card.forms import CardForm
 from card.models import Card, Deck
 import json
+import os
+from pprint import pprint
+from django.http import HttpResponse
 
 # Create your views here.
 def create_deck(request):
@@ -52,3 +55,36 @@ def show_deck(request):
 	{
 	    "decks" : decks
 	})
+
+def import_cards(request):
+	module_dir = os.path.dirname(__file__)
+	file_path = os.path.join(module_dir, 'cards.json')
+	file = open(file_path)
+
+	with file as f:
+		data = json.load(f)
+
+	for card in data['Basic']:
+		if 'img' in card:
+			if card['type'] != 'Hero' :
+				card_instance = Card.objects.create(
+									name=card['name'], 
+									description=card['flavor'] if 'flavor' in card else None,
+									cost=card['cost'] if 'cost' in card else None,
+									attack_point=card['attack'] if 'attack' in card else None,
+									life_point=card['health'] if 'health' in card else None,
+									image=card['img'],
+									imageGold=card['imgGold'],
+									classe=card['playerClass'],
+									rare=card['rarity'] if 'rarity' in card else None,
+									race=card['race'] if 'race' in card else None,
+									cardSet=card['cardSet'],
+									artist=card['artist'] if 'artist' in card else None,
+								)
+
+	return HttpResponse("test");
+
+
+
+	
+
