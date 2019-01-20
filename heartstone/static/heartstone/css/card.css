@@ -32,10 +32,8 @@
   display: inline-block;
   min-width: 40px;
   padding: 2em 0.5em;
-
-  color: #fff;
-  background-color: #29e;
-  border: solid 2px #fff;
+  color: #fff;  
+  
 
   -webkit-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
@@ -45,7 +43,7 @@
 
 .drag-drop.can-drop {
   color: #000;
-  border-color: #4e4;
+  
 }
 
 .form-signin {
@@ -128,11 +126,11 @@
 }
 
 .wrapper .box{
+  text-align: center;
 	float:left;
 	width:290px;
 	height:250px;
-	margin:0 10px 10px 0;
-	background-color:#CCCCCC;
+	margin:0 10px 10px 0;	
 	-webkit-transition:all 1.0s ease;
 	-moz-transition:all 1.0s ease;
 	transition:all 1.0s ease;
@@ -145,4 +143,9 @@
 
 .wrapper.list-mode .box{
 	width:100%;
+}
+
+.cardImg{
+  width: 75%;
+  margin-top: -25%;
 }

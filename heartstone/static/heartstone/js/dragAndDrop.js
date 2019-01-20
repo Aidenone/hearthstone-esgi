@@ -14,8 +14,8 @@ function dragMoveListener (event) {
   // update the posiion attributes
   target.setAttribute('data-x', x);
   target.setAttribute('data-y', y);
-  target.style.height ='100px';
-  target.style.width ='100px';
+  target.style.height ='200px';
+  target.style.width ='200px';
 } 
 
 dataCard = [];
@@ -47,6 +47,8 @@ interact('.dropzone').dropzone({
     event.relatedTarget.removeAttribute('data-x');
     event.relatedTarget.removeAttribute('data-y');
     event.relatedTarget.removeAttribute('style');
+    idCard = event.relatedTarget.id;
+    dataCard.pop(idCard);
 
     
   },
