@@ -149,3 +149,9 @@
   width: 75%;
   margin-top: -25%;
 }
+
+.displayDeck{
+  width: 80%;
+  overflow-x: auto;
+  margin:1%;
+}

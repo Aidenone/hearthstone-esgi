@@ -11,11 +11,18 @@
 		{% for deck in decks %}
 			<li>{{deck.name}} :</li>
 			<ul>
-				{% for card in deck.cards.all %}
-					<li>
-						{{card.name}}
-					</li>
-				{%endfor%}
+				<div class="displayDeck">
+				<div class="wrapper">
+						<div class='headerList'>
+						   VOTRE COLLECTION
+					   </div>
+					   <div class="display">
+							{% for card in deck.cards.all %}
+								<div id="{{card.id}}" class="drag-drop box" ><img src="{{card.image}}" alt="{{card.name}}" class="cardImg"></div>
+							{%endfor%}
+					   </div>
+				   </div>
+				</div>
 			</ul>
 		{%endfor%}
 	</ul>

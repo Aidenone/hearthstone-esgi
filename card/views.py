@@ -59,7 +59,7 @@ def show_deck(request):
 def import_cards(request):
 	module_dir = os.path.dirname(__file__)
 	file_path = os.path.join(module_dir, 'cards.json')
-	file = open(file_path)
+	file = open(file_path, encoding="utf8")
 
 	with file as f:
 		data = json.load(f)
