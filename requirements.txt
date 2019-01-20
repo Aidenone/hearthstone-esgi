@@ -1,2 +1,4 @@
 Django == 2.*
 psycopg2-binary
+pip
+requests>=2.18.4
