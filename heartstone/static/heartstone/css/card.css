@@ -5,7 +5,7 @@
 }
 
 #inner-dropzone {
-  height: 80px;
+  height: 250px;
 }
 
 .dropzone {
@@ -23,7 +23,7 @@
 }
 
 .drop-target {
-  background-color: #29e;
+  background-color: #fff;
   border-color: #fff;
   border-style: solid;
 }
@@ -45,7 +45,7 @@
 
 .drag-drop.can-drop {
   color: #000;
-  background-color: #4e4;
+  border-color: #4e4;
 }
 
 .form-signin {
@@ -88,4 +88,61 @@
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 5px;
+}
+
+.btnSubmit{
+  width: 100%;
+  margin-bottom: 5%;
+  height: 30px;
+}
+
+
+.wrapper{
+  /*width:450px;*/
+  height: 400px;
+	margin:30px auto 0;
+	background-color:#FFFFFF;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.headerList{
+	text-align:center;
+	padding:10px;
+	margin-bottom:10px;
+	background-color:rgba(8,3,37,.4);
+}
+
+
+.display:after{
+	content:"";
+	clear:both;
+	display:table;
+}
+
+.display{
+  padding:10px 0 10px 10px;
+  height: 340px;
+  overflow-y: auto;
+}
+
+.wrapper .box{
+	float:left;
+	width:290px;
+	height:250px;
+	margin:0 10px 10px 0;
+	background-color:#CCCCCC;
+	-webkit-transition:all 1.0s ease;
+	-moz-transition:all 1.0s ease;
+	transition:all 1.0s ease;
+	transition:all 1.0s ease;
+}
+
+.wrapper.list-mode .container{
+	padding-right:10px;
+}
+
+.wrapper.list-mode .box{
+	width:100%;
 }

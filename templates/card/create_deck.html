@@ -6,22 +6,38 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-<!--<div class="container">
+
+<div class="container">
 		<div class="row">
 		  <div class="col">
-			  <div class="cardsList">-->
+			  <div class="cardsList" style="margin: 10%;">
+					
+					<div id="inner-dropzone"  class="dropzone">Ajoute tes cartes ici</div>
+					<input type="submit" id="submit" class="btnSubmit" value="Créer le deck">
+					
 			{% for card in cards.all %}
-				<div id="{{card.id}}" class="drag-drop">{{card.name}}</div>
+			
+				<!--<div id="{{card.id}}" class="drag-drop">{{card.name}}</div>-->
 			{%endfor%}
-				<!--</div>
-		  </div>
-		  <div class="col">-->
-				<div id="inner-dropzone"  class="dropzone">Ajoute tes cartes ici</div>
-				<input type="submit" id="test" value="Créer le deck">
-		  <!--</div>
+					
+			<div class="wrapper">
+					<div class='headerList'>
+					   VOTRE COLLECTION
+				   </div>
+				   <div class="display">
+						{% for card in cards.all %}	
+							<div id="{{card.id}}" class="drag-drop box">{{card.name}}</div>
+						{%endfor%}
+				   </div>
+			   </div>
+		  
+		  
+				
+			</div>
+		  
 		</div>
 		
-	  </div>-->
+	  </div>
 	  
 	
 	

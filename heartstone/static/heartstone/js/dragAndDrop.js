@@ -7,12 +7,16 @@ function dragMoveListener (event) {
   // translate the element
   target.style.webkitTransform =
   target.style.transform =
-    'translate(' + x + 'px, ' + y + 'px)';
+    'translate(' + x + 'px, ' + y + 'px) ';
+    
+  target.style.position ='absolute ';
 
   // update the posiion attributes
   target.setAttribute('data-x', x);
   target.setAttribute('data-y', y);
-}
+  target.style.height ='100px';
+  target.style.width ='100px';
+} 
 
 dataCard = [];
 interact('.dropzone').dropzone({
@@ -40,6 +44,11 @@ interact('.dropzone').dropzone({
     // remove the drop feedback style
     event.target.classList.remove('drop-target');
     event.relatedTarget.classList.remove('can-drop');
+    event.relatedTarget.removeAttribute('data-x');
+    event.relatedTarget.removeAttribute('data-y');
+    event.relatedTarget.removeAttribute('style');
+
+    
   },
   ondrop: function (event) {
     //event.relatedTarget.textContent = 'Dropped';
@@ -60,12 +69,13 @@ interact('.dropzone').dropzone({
 
 interact('.drag-drop')
   .draggable({
+    allowFrom: '',
     inertia: true,
-    restrict: {
+    /*restrict: {
       restriction: "parent",
       endOnly: true,
       elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-    },
+  },*/
     autoScroll: true,
     onmove: dragMoveListener,
   });
@@ -85,9 +95,11 @@ interact('.drag-drop')
       }
       return "";
    }
- 
+   
  $(document).ready(function(){
+  
     $( '#submit' ).click(function() {
+      console.log('submit ok');
     $.ajaxSetup({
         headers: { "X-CSRFToken": getCookie("csrftoken") }
     });
@@ -101,4 +113,3 @@ interact('.drag-drop')
     }); 
   });
  });
-  
