@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 class Card(models.Model):
     name = models.CharField(max_length=100, blank=True)
@@ -18,6 +19,9 @@ class Card(models.Model):
     def __str__(self):
         return self.name
 
+class Collection(models.Model):
+    user_id = models.IntegerField(blank=True, null=True)
+    cards = models.ManyToManyField("Card")
 
 class Deck(models.Model):
     name = models.TextField(max_length=50, blank=True)

@@ -1,0 +1,43 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Purchase{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+  <!-- Main Content -->
+  <section class="content-wrap full youplay-login">
+
+    <!-- Banner -->
+    <div class="youplay-banner banner-top">
+      <div class="image" style="background-image: url('/static/assets/images/banner-bg.jpg')"></div>
+
+          <div class="info">
+        <div>
+          <div class="container align-center">
+            <div class="youplay-form">
+                <div class="store">
+                    <div class="purchase">
+                        <a href="{% url 'purchase' %}">
+                            Achat de pack
+                        </a>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Banner -->
+
+  </section>
+  <!-- /Main Content -->
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+{% endblock %}
+
+
+

@@ -2,23 +2,40 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!--<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>-->
-<body class="text-center">
-  
-<img class="mb-4" src="/docs/4.2/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-<h1 class="h3 mb-3 font-weight-normal">LOGIN</h1>
-<form method="post" style="width: 100%;max-width: 330px;padding: 15px;margin: auto;">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-</form>
-<p class="mt-5 mb-3 text-muted">© 2019</p>
+  <!-- Main Content -->
+  <section class="content-wrap full youplay-login">
 
+    <!-- Banner -->
+    <div class="youplay-banner banner-top">
+      <div class="image" style="background-image: url('assets/images/banner-bg.jpg')"></div>
 
+      <div class="info">
+        <div>
+          <div class="container align-center">
+            <div class="youplay-form">
+              <h1>Login</h1>
 
-</body>
+              <div class="btn-group social-list dib">
+                <a class="btn btn-default" title="Share on Facebook" href="#!"><i class="fa fa-facebook"></i></a>
+                <a class="btn btn-default" href="#!" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+                <a class="btn btn-default" href="#!" title="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+              </div>
+                <form method="post">
+                <div class="youplay-input">
+                 {% csrf_token %} {{ form.as_p }}
+                </div>
+                    <div>
+                     <a href="{% url 'password_reset' %}"> Mot de passe oublié </a>
+                  </div>
+                <button class="btn btn-default db">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Banner -->
+
+  </section>
+  <!-- /Main Content -->
 {% endblock %}

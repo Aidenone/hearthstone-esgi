@@ -88,6 +88,7 @@
     padding: 5px;
 }
 
+<<<<<<< HEAD
 .btnSubmit{
   width: 100%;
   margin-bottom: 5%;
@@ -155,3 +156,8 @@
   overflow-x: auto;
   margin:1%;
 }
+=======
+.deck_cards li {
+    display: inline-block;
+}
+>>>>>>> ad424fa0ffe38d7104822758503ad92a9cc49edf

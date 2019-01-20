@@ -5,6 +5,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+<<<<<<< HEAD
 
 
 <div class="container">
@@ -41,7 +42,23 @@
 	  
 	
 	
+=======
+ <section class="content-wrap full">
+    <!-- Banner -->
+    <div class="youplay-banner banner-top">
+>>>>>>> ad424fa0ffe38d7104822758503ad92a9cc49edf
 	
+		<label for="deck_name">nom du deck : </label>
+		<input type="texte" id="deck_name" name="deck_name"> <br>
+
+		{% for card in cards.all %}
+			<div id="{{card.id}}" class="drag-drop"><img style="width: 100px; padding: 0;" src="{{card.image}}"></div>
+		{%endfor%}
+
+		<div style="height: 290px" id="inner-dropzone" class="dropzone">Game AREA</div>
+		<input type="submit" id="submit" value="Créer le deck">
+	</div>
+ </section>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a>

@@ -10,6 +10,7 @@
 	<ul>
 		{% for deck in decks %}
 			<li>{{deck.name}} :</li>
+<<<<<<< HEAD
 			<ul>
 				<div class="displayDeck">
 				<div class="wrapper">
@@ -23,6 +24,14 @@
 					   </div>
 				   </div>
 				</div>
+=======
+			<ul class="deck_cards">
+				{% for card in deck.cards.all %}
+					<li>
+						<img src="{{card.image}}" alt="{{card.name}}" width="50">
+					</li>
+				{%endfor%}
+>>>>>>> ad424fa0ffe38d7104822758503ad92a9cc49edf
 			</ul>
 		{%endfor%}
 	</ul>
