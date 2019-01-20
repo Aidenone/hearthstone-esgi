@@ -1,24 +1,21 @@
-<!-- templates/card.html-->
+<!-- templates/card/view_collection.html-->
 {% extends 'base.html' %}
 
 {% block title %}Decks{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-	<h1>Mes decks :</h1>
+	<h1>Ma collection :</h1>
 
-	<ul>
-		{% for deck in decks %}
-			<li>{{deck.name}} :</li>
+		{% for collection in collections %}
 			<ul>
-				{% for card in deck.cards.all %}
+				{% for card in collection.cards.all %}
 					<li>
 						<img src="{{card.image}}">
 					</li>
 				{%endfor%}
 			</ul>
 		{%endfor%}
-	</ul>
 
 {% else %}
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from card.forms import CardForm
-from card.models import Card, Deck
+from card.models import Card, Deck, Collection
 import json
 import os
 from pprint import pprint
@@ -29,7 +29,7 @@ def create_deck(request):
 	return render(request,
 	"card/create_deck.html",
 	{
-	"cards" : cards
+		"cards" : cards
 	})
 
 def create_card(request):
@@ -54,6 +54,24 @@ def show_deck(request):
 	"card/show_deck.html",
 	{
 	    "decks" : decks
+	})
+
+def view_collection(request):
+	current_user = request.user
+	CurrentCollection = Collection.objects.filter(user_id=current_user.id)
+	if not CurrentCollection :
+		FreeCards = Card.objects.filter(rare="Free").values_list('id', flat=True)
+		CardIds = []
+		for id in FreeCards :
+			CardIds.append(id);
+		collection_instance = Collection.objects.create(user_id=current_user.id)
+		collection_instance.cards.set(CardIds)
+		CurrentCollection = Collection.objects.filter(user_id=current_user.id)
+
+	return render(request,
+	"card/view_collection.html",
+	{
+	    "collections" : CurrentCollection
 	})
 
 def import_cards(request):
@@ -82,7 +100,7 @@ def import_cards(request):
 									artist=card['artist'] if 'artist' in card else None,
 								)
 
-	return HttpResponse("test");
+	return HttpResponse("Cartes importées");
 
 
 
