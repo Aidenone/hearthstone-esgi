@@ -43,10 +43,11 @@ interact('.dropzone').dropzone({
   ondragleave: function (event) {
     // remove the drop feedback style
     event.target.classList.remove('drop-target');
-    event.relatedTarget.classList.remove('can-drop');
+   
     event.relatedTarget.removeAttribute('data-x');
     event.relatedTarget.removeAttribute('data-y');
     event.relatedTarget.removeAttribute('style');
+    event.relatedTarget.classList.remove('can-drop');
     idCard = event.relatedTarget.id;
     dataCard.pop(idCard);
 
@@ -54,7 +55,7 @@ interact('.dropzone').dropzone({
   },
   ondrop: function (event) {
     //event.relatedTarget.textContent = 'Dropped';
-    console.log("dropped");
+    
     idCard = event.relatedTarget.id;
     dataCard.push(idCard);
     
@@ -115,6 +116,20 @@ interact('.drag-drop')
       }
     }); 
   });
+  $( '#tri' ).click(function() {
+    console.log('tri ok');
+  $.ajaxSetup({
+      headers: { "X-CSRFToken": getCookie("csrftoken") }
+  });
+  /*$.ajax({
+    type: 'POST',
+    url: '/card/create/deck/',
+    data: { 'deck' : dataCard },
+    success: function (data) {          
+        alert("data send success");          
+    }
+  }); */
+});
   $( '#clean' ).click(function() {
     console.log('clean');
     var clear = document.getElementsByClassName("can-drop");
