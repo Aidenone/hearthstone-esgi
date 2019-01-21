@@ -50,15 +50,16 @@ interact('.dropzone').dropzone({
     idCard = event.relatedTarget.id;
     dataCard.pop(idCard);
 
-    
+    console.log(dataCard);
   },
   ondrop: function (event) {
     //event.relatedTarget.textContent = 'Dropped';
+    console.log("dropped");
     idCard = event.relatedTarget.id;
     dataCard.push(idCard);
     
     
-    console.log(dataCard);
+    console.log("dataCard",dataCard);
 
      
   },
@@ -114,4 +115,17 @@ interact('.drag-drop')
       }
     }); 
   });
+  $( '#clean' ).click(function() {
+    console.log('clean');
+    var clear = document.getElementsByClassName("can-drop");
+    for(var i = 0; i < clear.length; i++){
+      clear[i].removeAttribute("style"); 
+   }
+
+   dataCard =[];
+
+    console.log(dataCard);
+    
+
+});
  });

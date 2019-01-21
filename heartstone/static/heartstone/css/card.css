@@ -88,7 +88,6 @@
     padding: 5px;
 }
 
-<<<<<<< HEAD
 .btnSubmit{
   width: 100%;
   margin-bottom: 5%;
@@ -99,6 +98,17 @@
 .wrapper{
   /*width:450px;*/
   height: 400px;
+	margin:30px auto 0;
+	background-color:#FFFFFF;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.wrapperCollection{
+  /*width:450px;*/
+  /*height: 400px;*/
+  text-align: center;
 	margin:30px auto 0;
 	background-color:#FFFFFF;
 	-webkit-box-sizing: border-box;
@@ -156,8 +166,12 @@
   overflow-x: auto;
   margin:1%;
 }
-=======
+
+.displayCollection{
+  padding:10px 0 10px 10px;
+  
+  /*overflow-y: auto;*/
+}
 .deck_cards li {
     display: inline-block;
 }
->>>>>>> ad424fa0ffe38d7104822758503ad92a9cc49edf

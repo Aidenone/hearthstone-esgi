@@ -5,17 +5,17 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-	<h1>Mes decks :</h1>
 
+	<div style="text-align: center;">	
+			  <div class="cardsList" style="margin-top: 10%;margin-left: 10%;">
 	<ul>
 		{% for deck in decks %}
-			<li>{{deck.name}} :</li>
-<<<<<<< HEAD
+			
 			<ul>
 				<div class="displayDeck">
 				<div class="wrapper">
 						<div class='headerList'>
-						   VOTRE COLLECTION
+							<span style="text-transform: uppercase;">{{deck.name}}</span>	
 					   </div>
 					   <div class="display">
 							{% for card in deck.cards.all %}
@@ -24,17 +24,11 @@
 					   </div>
 				   </div>
 				</div>
-=======
-			<ul class="deck_cards">
-				{% for card in deck.cards.all %}
-					<li>
-						<img src="{{card.image}}" alt="{{card.name}}" width="50">
-					</li>
-				{%endfor%}
->>>>>>> ad424fa0ffe38d7104822758503ad92a9cc49edf
 			</ul>
 		{%endfor%}
 	</ul>
+</div>
+</div>
 
 {% else %}
 
