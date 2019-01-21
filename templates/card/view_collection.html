@@ -6,20 +6,30 @@
 {% block content %}
 {% if user.is_authenticated %}
 
- <section class="content-wrap full">
+ <section class="content-wrap">
     <!-- Banner -->
-    <div class="youplay-banner banner-top">
-	<h1>Ma collection :</h1>
-
+	<div class="youplay-banner youplay-banner-parallax banner-top xsmall">
+		<div class="image" style="background-image: url('/static/assets/images/banner-blog-bg.jpg')"></div>
+		<div class="info">
+			<div>
+				<div class="container">
+					<h1>Ma collection</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Banner -->
+	<div>
 		{% for collection in collections %}
 			<ul class="deck_cards">
 				{% for card in collection.cards.all %}
 					<li>
-						<img src="{{card.image}}">
+						<img src="{{card.image}}" width="100">
 					</li>
 				{%endfor%}
 			</ul>
 		{%endfor%}
+	</div>
 {% else %}
 
   <p>You are not logged in</p>

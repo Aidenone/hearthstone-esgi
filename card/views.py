@@ -22,7 +22,7 @@ def create_deck(request):
 		return render(request,
 		"card/create_deck.html",
 		{
-		"test" : card_ids
+			"test" : card_ids
 		})
 
 	cards = Card.objects.all()
@@ -43,8 +43,8 @@ def create_card(request):
         form = CardForm()
     return render(request, 'card/create_card.html', {'form': form})
 
-def show_deck(request):
 
+def show_deck(request):
 	if request.user :
 		current_user = request.user
 
@@ -86,20 +86,19 @@ def import_cards(request):
 		if 'img' in card:
 			if card['type'] != 'Hero' :
 				card_instance = Card.objects.create(
-									name=card['name'], 
-									description=card['flavor'] if 'flavor' in card else None,
-									cost=card['cost'] if 'cost' in card else None,
-									attack_point=card['attack'] if 'attack' in card else None,
-									life_point=card['health'] if 'health' in card else None,
-									image=card['img'],
-									imageGold=card['imgGold'],
-									classe=card['playerClass'],
-									rare=card['rarity'] if 'rarity' in card else None,
-									race=card['race'] if 'race' in card else None,
-									cardSet=card['cardSet'],
-									artist=card['artist'] if 'artist' in card else None,
-								)
-
+					name=card['name'],
+					description=card['flavor'] if 'flavor' in card else None,
+					cost=card['cost'] if 'cost' in card else None,
+					attack_point=card['attack'] if 'attack' in card else None,
+					life_point=card['health'] if 'health' in card else None,
+					image=card['img'],
+					imageGold=card['imgGold'],
+					classe=card['playerClass'],
+					rare=card['rarity'] if 'rarity' in card else None,
+					race=card['race'] if 'race' in card else None,
+					cardSet=card['cardSet'],
+					artist=card['artist'] if 'artist' in card else None,
+				)
 
 	return HttpResponse("Cartes importées");
 

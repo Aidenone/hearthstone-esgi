@@ -4,30 +4,39 @@
 {% block title %}Decks{% endblock %}
 
 {% block content %}
+<section class="content-wrap">
 {% if user.is_authenticated %}
-	<h1>Mes decks :</h1>
-
+	<!-- Banner -->
+	<div class="youplay-banner youplay-banner-parallax banner-top xsmall">
+		<div class="image" style="background-image: url('/static/assets/images/banner-blog-bg.jpg')"></div>
+		<div class="info">
+			<div>
+				<div class="container">
+					<h1>Mes decks</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Banner -->
 	<ul>
 		{% for deck in decks %}
 			<li>{{deck.name}} :</li>
 			<ul class="deck_cards">
 				{% for card in deck.cards.all %}
 					<li>
-						<img src="{{card.image}}" alt="{{card.name}}" width="50">
+						<img src="{{card.image}}" alt="{{card.name}}" width="100">
 					</li>
 				{%endfor%}
 			</ul>
 		{%endfor%}
 	</ul>
-
 {% else %}
 
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a>
-
 {% endif %}
   
-</div>
+</section>
 {% endblock %}
 
 

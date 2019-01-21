@@ -16,15 +16,25 @@
         <div>
           <div class="container align-center">
             <div class="youplay-form">
-                <div class="store">
-                    <div class="sale">
-                        <p>
-                            <a href="{% url 'sale' %}">
-                                Echange et vente de cartes
-                            </a>
-                        </p>
-                    </div>
-                </div>
+                <form action="">
+                <select id="mySelect" name="deck">
+                    {% for desk in decks.all %}
+                        <option value="{{ desk.id }}">{{ desk.name }}</option>
+                    {%endfor%}
+                </select>
+                    <button>Envoyer</button>
+
+                {% for deck in cardDecks %}
+                    <li>{{deck.name}} :</li>
+                    <ul class="deck_cards">
+                        {% for card in deck.cards.all %}
+                            <li>
+                                <img src="{{card.image}}" alt="{{card.name}}" width="100">
+                            </li>
+                        {%endfor%}
+                    </ul>
+                {%endfor%}
+                </form>
             </div>
           </div>
         </div>
