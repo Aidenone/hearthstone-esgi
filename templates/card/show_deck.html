@@ -5,7 +5,7 @@
 
 {% block content %}
 <section class="content-wrap">
-{% if user.is_authenticated %}
+	{% if user.is_authenticated %}
 	<!-- Banner -->
 	<div class="youplay-banner youplay-banner-parallax banner-top xsmall">
 		<div class="image" style="background-image: url('/static/assets/images/banner-blog-bg.jpg')"></div>
@@ -18,24 +18,37 @@
 		</div>
 	</div>
 	<!-- /Banner -->
-	<ul>
-		{% for deck in decks %}
-			<li>{{deck.name}} :</li>
-			<ul class="deck_cards">
-				{% for card in deck.cards.all %}
-					<li>
-						<img src="{{card.image}}" alt="{{card.name}}" width="100">
-					</li>
+
+	<div style="text-align: center;">
+		<div class="cardsList" style="margin-top: 10%;margin-left: 10%;">
+			<ul>
+				{% for deck in decks %}
+
+				<ul>
+					<div class="displayDeck">
+						<div class="wrapper">
+							<div class='headerList'>
+								<span style="text-transform: uppercase;">{{deck.name}}</span>
+							</div>
+							<div class="display">
+								{% for card in deck.cards.all %}
+								<div id="{{card.id}}" class="drag-drop box" ><img src="{{card.image}}" alt="{{card.name}}" class="cardImg"></div>
+								{%endfor%}
+							</div>
+						</div>
+					</div>
+				</ul>
 				{%endfor%}
 			</ul>
-		{%endfor%}
-	</ul>
-{% else %}
+		</div>
+	</div>
 
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
-  
+	{% else %}
+
+	<p>You are not logged in</p>
+	<a href="{% url 'login' %}">login</a>
+	{% endif %}
+
 </section>
 {% endblock %}
 

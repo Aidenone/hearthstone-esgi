@@ -6,8 +6,8 @@
 {% block content %}
 {% if user.is_authenticated %}
 
- <section class="content-wrap">
-    <!-- Banner -->
+<section class="content-wrap">
+	<!-- Banner -->
 	<div class="youplay-banner youplay-banner-parallax banner-top xsmall">
 		<div class="image" style="background-image: url('/static/assets/images/banner-blog-bg.jpg')"></div>
 		<div class="info">
@@ -19,25 +19,28 @@
 		</div>
 	</div>
 	<!-- /Banner -->
-	<div>
+
+	<div class="youplay-banner banner-top">
 		{% for collection in collections %}
-			<ul class="deck_cards">
+		<div class="wrapperCollection">
+			<div class='headerList'>
+				VOTRE COLLECTION
+			</div>
+			<div class="displayCollection">
 				{% for card in collection.cards.all %}
-					<li>
-						<img src="{{card.image}}" width="100">
-					</li>
+					<div id="{{card.id}}" class="drag-drop box">
+						<img src="{{card.image}}" alt="{{card.name}}" class="cardImg">
+					</div>
 				{%endfor%}
-			</ul>
+			</div>
+		</div>
 		{%endfor%}
 	</div>
-{% else %}
-
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-
-{% endif %}
-</div>
-  </section>
+	{% else %}
+		<p>You are not logged in</p>
+		<a href="{% url 'login' %}">login</a>
+	{% endif %}
+</section>
 {% endblock %}
 
 
