@@ -9,16 +9,19 @@
  <section class="content-wrap full">
     <!-- Banner -->
     <div class="youplay-banner banner-top">
-	<h1>Ma collection :</h1>
+
 
 		{% for collection in collections %}
-			<ul class="deck_cards">
-				{% for card in collection.cards.all %}
-					<li>
-						<img src="{{card.image}}">
-					</li>
-				{%endfor%}
-			</ul>
+					<div class="wrapperCollection">
+					<div class='headerList'>
+					   VOTRE COLLECTION
+				   </div>
+				   <div class="displayCollection">
+							{% for card in collection.cards.all %}	
+							<div id="{{card.id}}" class="drag-drop box" ><img src="{{card.image}}" alt="{{card.name}}" class="cardImg"></div>
+						{%endfor%}
+				   </div>
+			   </div>
 		{%endfor%}
 {% else %}
 
