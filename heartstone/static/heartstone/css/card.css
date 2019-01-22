@@ -35,8 +35,8 @@
   color: #fff;  
   
 
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
+  /*-webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);*/
 
   transition: background-color 0.3s;
 }
@@ -142,10 +142,10 @@
 	width:290px;
 	height:250px;
 	margin:0 10px 10px 0;	
-	-webkit-transition:all 1.0s ease;
+	/*-webkit-transition:all 1.0s ease;
 	-moz-transition:all 1.0s ease;
 	transition:all 1.0s ease;
-	transition:all 1.0s ease;
+	transition:all 1.0s ease;*/
 }
 
 .wrapper.list-mode .container{

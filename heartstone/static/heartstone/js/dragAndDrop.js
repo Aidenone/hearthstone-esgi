@@ -42,8 +42,7 @@ interact('.dropzone').dropzone({
   },
   ondragleave: function (event) {
     // remove the drop feedback style
-    event.target.classList.remove('drop-target');
-   
+    event.target.classList.remove('drop-target');   
     event.relatedTarget.removeAttribute('data-x');
     event.relatedTarget.removeAttribute('data-y');
     event.relatedTarget.removeAttribute('style');
