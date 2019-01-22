@@ -1,5 +1,6 @@
 <h2 class="container h1">Les packs de cartes disponible</h2>
 <div class="youplay-carousel">
+    {% if user.is_authenticated %}
     {% for cardDeck in cardDecks %}
     <a class="angled-img" href="#!">
         <div class="img img-offset">
@@ -28,5 +29,7 @@
         </div>
     </a>
     {%endfor%}
+    {%endif%}
+
 </div>
 <!-- /Specials -->

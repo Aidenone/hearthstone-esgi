@@ -1,12 +1,9 @@
 from django.shortcuts import render
-from card.models import Deck
+from card.models import Deck, Card, Collection
 from store.models import Card_Store, score
 from store.forms import StoreForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, Http404
-from inspect import getmembers
-from pprint import pprint
-from django.forms import formset_factory
+
 
 # Create your views here.
 
@@ -29,22 +26,23 @@ def sell(request):
 	if request.user :
 		current_user = request.user
 
-	decks = Deck.objects.filter(user=current_user)
+	decks = Deck.objects.filter(id_user=current_user.id)
 
 	if request.GET and request.GET["deck"]:
 		idDeck = request.GET['deck']
-		cardDecks = Deck.objects.filter(id=idDeck)
+		cards = Card.objects.filter(collection__user_id=request.user.id)
 	else:
-		cardDecks = Deck.objects.filter(id=0)
+		cards = Card.objects.filter(collection__user_id=request.user.id)
 
 		if request.method == "POST":
-			form = StoreForm(request.POST)
+			card = Card.objects.get(id=request.POST.get("card"))
+			c = Card_Store(user=current_user, card=card, available="1", point=request.POST.get("price"))
 
-			if form.is_valid():
-				store = form
-				store.save()
+			coll = Collection.objects.get(user_id=request.user.id)
+			coll.cards.remove(card)
 
-				return render(request, "store/home.html")
+			c.save()
+			return render(request, "store/home.html")
 		else:
 			form = StoreForm()
 
@@ -52,7 +50,7 @@ def sell(request):
 	"store/sell.html",
 	{
 	    "decks" : decks,
-		"cardDecks": cardDecks,
+		"cards": cards,
 		"form": form
 
 	})

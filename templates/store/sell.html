@@ -18,10 +18,18 @@
             <div class="youplay-form">
               <form method="POST" action="">
                 {% csrf_token %}
-                {{ form }}
-                <input type="hidden" name="user" value="{{ user.id }}">
-                <input type="hidden" name="date" value="{% now "m/d/Y" %}">
-                <input type="hidden" name="available" value="1">
+                <div>
+                   <label>Card</label>
+                    <select name="card">
+                      {% for card in cards %}
+                        <option value="{{ card.id }}">{{ card.name }}</option>
+                      {%endfor%}
+                    </select>
+                </div>
+               <div>
+                 <label>Price </label>
+                <input type="number" name="price">
+               </div>
                 <input type="submit" value="Envoyer">
               </form>
             </div>

@@ -7,7 +7,7 @@ from datetime import datetime
 class Card_Store(models.Model):
     user = ForeignKey(User, on_delete=models.CASCADE)
     card = ForeignKey(Card, on_delete=models.CASCADE)
-    date = models.DateField()
+    date = models.DateTimeField(default=datetime.now, blank=True)
     point = models.IntegerField()
     available = models.IntegerField()
 
