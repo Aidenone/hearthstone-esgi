@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from card.forms import CardForm
 from card.models import Card, Deck, Collection
+from django.http import HttpResponseRedirect
 import json
 import os
 from pprint import pprint
 from django.http import HttpResponse
+from django.db.models import Q
 
 # Create your views here.
 def create_deck(request):
@@ -15,7 +17,7 @@ def create_deck(request):
 
 	if request.method == 'POST': 
 		current_user = request.user
-		deck_name = "Nom du Deck"
+		deck_name = request.POST.get("deck_name")
 		deck_instance = Deck.objects.create(name=deck_name, id_user=current_user.id)
 		deck_instance.cards.set(card_ids)
 
@@ -25,12 +27,26 @@ def create_deck(request):
 			"test" : card_ids
 		})
 
-	cards = Card.objects.all()
+	if not request.GET.get("class") :
+		return render(request,
+		"card/create_deck.html",
+		{
+			"choice" : 1,
+		})
+
+	cards = Card.objects.filter(Q(collection__user_id=request.user.id), Q(classe=request.GET.get("class")) | Q(classe="Neutral"))
 	return render(request,
 	"card/create_deck.html",
 	{
+		"choice" : 0,
 		"cards" : cards
 	})
+
+def delete_deck(request, id_deck):
+	deck_instance = Deck.objects.filter(id=id_deck)
+	deck_instance.delete();
+	return HttpResponseRedirect("/card/show/decks")
+
 
 def create_card(request):
     if request.method == "POST":
@@ -43,8 +59,8 @@ def create_card(request):
         form = CardForm()
     return render(request, 'card/create_card.html', {'form': form})
 
-
 def show_deck(request):
+
 	if request.user :
 		current_user = request.user
 
@@ -86,19 +102,20 @@ def import_cards(request):
 		if 'img' in card:
 			if card['type'] != 'Hero' :
 				card_instance = Card.objects.create(
-					name=card['name'],
-					description=card['flavor'] if 'flavor' in card else None,
-					cost=card['cost'] if 'cost' in card else None,
-					attack_point=card['attack'] if 'attack' in card else None,
-					life_point=card['health'] if 'health' in card else None,
-					image=card['img'],
-					imageGold=card['imgGold'],
-					classe=card['playerClass'],
-					rare=card['rarity'] if 'rarity' in card else None,
-					race=card['race'] if 'race' in card else None,
-					cardSet=card['cardSet'],
-					artist=card['artist'] if 'artist' in card else None,
-				)
+									name=card['name'], 
+									description=card['flavor'] if 'flavor' in card else None,
+									cost=card['cost'] if 'cost' in card else None,
+									attack_point=card['attack'] if 'attack' in card else None,
+									life_point=card['health'] if 'health' in card else None,
+									image=card['img'],
+									imageGold=card['imgGold'],
+									classe=card['playerClass'],
+									rare=card['rarity'] if 'rarity' in card else None,
+									race=card['race'] if 'race' in card else None,
+									cardSet=card['cardSet'],
+									artist=card['artist'] if 'artist' in card else None,
+								)
+
 
 	return HttpResponse("Cartes importées");
 

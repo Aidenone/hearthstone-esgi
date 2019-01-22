@@ -28,7 +28,7 @@
 					<div class="displayDeck">
 						<div class="wrapper">
 							<div class='headerList'>
-								<span style="text-transform: uppercase;">{{deck.name}}</span>
+								<span style="text-transform: uppercase;">{{deck.name}}</span><span><a href="/card/delete/deck/{{deck.id}}">Supprimer</a></span>
 							</div>
 							<div class="display">
 								{% for card in deck.cards.all %}
@@ -38,6 +38,7 @@
 						</div>
 					</div>
 				</ul>
+
 				{%endfor%}
 			</ul>
 		</div>

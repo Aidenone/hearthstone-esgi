@@ -103,13 +103,14 @@ interact('.drag-drop')
   
     $( '#submit' ).click(function() {
       console.log('submit ok');
+      deck_name = $("#deck_name").val();
     $.ajaxSetup({
         headers: { "X-CSRFToken": getCookie("csrftoken") }
     });
     $.ajax({
       type: 'POST',
       url: '/card/create/deck/',
-      data: { 'deck' : dataCard },
+      data: { 'deck' : dataCard, 'deck_name' : deck_name },
       success: function (data) {          
           alert("data send success");          
       }
