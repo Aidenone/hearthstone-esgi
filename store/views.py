@@ -14,6 +14,18 @@ def listCardSell(request):
 	if request.user :
 		current_user = request.user
 
+	if request.method == "POST":
+		card = Card.objects.get(id=request.POST.get("card"))
+		c = Card_Store(user=current_user, card=card, available="0", point=request.POST.get("price"))
+
+		coll = Collection.objects.get(user_id=request.user.id)
+		coll.cards.add(card)
+
+		c.save()
+		return render(request, "store/home.html")
+	else:
+			form = StoreForm()
+
 	cardDecks = Card_Store.objects.filter(available=1).exclude(user=current_user)
 
 	return render(request,

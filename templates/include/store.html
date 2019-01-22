@@ -4,25 +4,31 @@
         {% for cardDeck in cardDecks %}
         <a class="angled-img" href="#!">
             <div class="img img-offset">
-                <img src="static/assets/images/game-dark-souls-ii-500x375.jpg" alt="">
-                <div class="badge bg-default">
-                    -20%
-                </div>
+                <img src="{{ cardDeck.card.image }}" alt="">
+                <form action="">
+                    <input type="hidden" name="card" value="{{ cardDeck.id }}">
+                    <button class="badge bg-default">
+                        Acheter
+                    </button>
+                </form>
             </div>
             <div class="bottom-info">
-                <h4>Dark Souls II</h4>
+                <h4>{{ cardDeck.card.name }}</h4>
                 <div class="row">
                     <div class="col-xs-6">
+                        {% if cardDeck.card.life_point %}
                         <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
+
+                            {% with ''|center:cardDeck.card.life_point as range %}
+                            {% for _ in range %}
+                                <i class="fa fa-star"></i>
+                            {% endfor %}
+                            {% endwith %}
                         </div>
+                        {% endif %}
                     </div>
                     <div class="col-xs-6">
-                        <div class="price">{{ cardDeck.point }}</sup>
+                        <div class="price">{{ cardDeck.point }} points
                         </div>
                     </div>
                 </div>
