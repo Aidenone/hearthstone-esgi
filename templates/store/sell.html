@@ -16,25 +16,14 @@
         <div>
           <div class="container align-center">
             <div class="youplay-form">
-                <form action="">
-                <select id="mySelect" name="deck">
-                    {% for desk in decks.all %}
-                        <option value="{{ desk.id }}">{{ desk.name }}</option>
-                    {%endfor%}
-                </select>
-                    <button>Envoyer</button>
-
-                {% for deck in cardDecks %}
-                    <li>{{deck.name}} :</li>
-                    <ul class="deck_cards">
-                        {% for card in deck.cards.all %}
-                            <li>
-                                <img src="{{card.image}}" alt="{{card.name}}" width="100">
-                            </li>
-                        {%endfor%}
-                    </ul>
-                {%endfor%}
-                </form>
+              <form method="POST" action="">
+                {% csrf_token %}
+                {{ form }}
+                <input type="hidden" name="user" value="{{ user.id }}">
+                <input type="hidden" name="date" value="{% now "m/d/Y" %}">
+                <input type="hidden" name="available" value="1">
+                <input type="submit" value="Envoyer">
+              </form>
             </div>
           </div>
         </div>

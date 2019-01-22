@@ -1,24 +1,18 @@
 from django.db import models
 from django.db.models import ForeignKey
-from card.models import Card, Deck
+from card.models import Card
 from django.contrib.auth.models import User
-
-
-class exchange(models.Model):
-    id_user = ForeignKey(User, on_delete=models.CASCADE)
-    point = models.IntegerField()
-    id_card = ForeignKey(Card, on_delete=models.CASCADE)
-    date = models.DateField()
-    available = models.IntegerField()
+from datetime import datetime
 
 class Card_Store(models.Model):
-    id_deck = ForeignKey(Deck, on_delete=models.CASCADE)
-    id_user = ForeignKey(User, on_delete=models.CASCADE)
-    id_card = ForeignKey(Card, on_delete=models.CASCADE)
+    user = ForeignKey(User, on_delete=models.CASCADE)
+    card = ForeignKey(Card, on_delete=models.CASCADE)
     date = models.DateField()
+    point = models.IntegerField()
+    available = models.IntegerField()
 
 class score(models.Model):
-    id_user = ForeignKey(User, on_delete=models.CASCADE)
+    user = ForeignKey(User, on_delete=models.CASCADE)
     point = models.IntegerField()
     type = models.IntegerField()
-    date = models.DateField()
+    date = models.DateTimeField(default=datetime.now, blank=True)

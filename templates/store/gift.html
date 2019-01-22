@@ -1,0 +1,39 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Store{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+  <!-- Main Content -->
+  <section class="content-wrap full youplay-login">
+      	<!-- Banner -->
+	<div class="youplay-banner banner-top youplay-banner-parallax xsmall">
+		<div class="image" style="background-image: url('/static/assets/images/banner-blog-bg.jpg')"></div>
+		<div class="info">
+			<div>
+				<div class="container">
+					<h1>Cadeau de bienvenu</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Banner -->
+
+<h2 class="container h1">On vous offre un cadeau de bienvenu</h2>
+<div class="">
+    Vous obtenez 100 pts pour votre inscription sur le site
+</div>
+<!-- /Specials -->
+
+  </section>
+  <!-- /Main Content -->
+
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+{% endblock %}
+
+
+
