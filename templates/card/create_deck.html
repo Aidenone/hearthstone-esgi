@@ -6,6 +6,8 @@
 {% block content %}
 {% if user.is_authenticated %}
 	{% if choice == 1 %}
+		<h2>Choisissez une classe : </h2>
+
 		<a href="?class=Shaman"><img src="/static/assets/images/hearthstone-portrait-Shaman.png"></a>
 		<a href="?class=Rogue"><img src="/static/assets/images/hearthstone-portrait-Rogue.png"></a>
 		<a href="?class=Druid"><img src="/static/assets/images/hearthstone-portrait-Druid.png"></a>
@@ -29,6 +31,10 @@
 			</div>
 		</div>
 		<!-- /Banner -->
+			<div style="text-align: center; width: 100%; margin-top: 35px">
+				<input style="width: 300px;" type="text" id="deck_name" name="deck_name" value="Nom du deck">
+			</div>
+
 			<div class="row">
 			  <div class="col">
 				  <div class="cardsList" style="margin: 10%;text-align: center;">

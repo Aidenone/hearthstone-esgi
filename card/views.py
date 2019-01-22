@@ -9,12 +9,6 @@ from django.db.models import Q
 
 # Create your views here.
 def create_deck(request):
-	if not request.GET.get("class") :
-		return render(request,
-		"card/create_deck.html",
-		{
-			"choice" : 1,
-		})
 
 	if request.is_ajax():
 		if request.method == 'POST':
@@ -22,7 +16,7 @@ def create_deck(request):
 
 	if request.method == 'POST': 
 		current_user = request.user
-		deck_name = "Nom du Deck"
+		deck_name = request.POST.get("deck_name")
 		deck_instance = Deck.objects.create(name=deck_name, id_user=current_user.id)
 		deck_instance.cards.set(card_ids)
 
@@ -30,6 +24,13 @@ def create_deck(request):
 		"card/create_deck.html",
 		{
 			"test" : card_ids
+		})
+
+	if not request.GET.get("class") :
+		return render(request,
+		"card/create_deck.html",
+		{
+			"choice" : 1,
 		})
 
 	cards = Card.objects.filter(Q(classe=request.GET.get("class")) | Q(classe="Neutral"))
