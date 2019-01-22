@@ -26,9 +26,12 @@
     <a class="angled-img" href="#!">
         <div class="img img-offset">
             <img src="{{ cardDeck.card.image }}" alt="">
-            <div class="badge bg-default">
-                Acheter
-            </div>
+            <form action="">
+                <input type="hidden" name="card" value="{{ cardDeck.id }}">
+                <button class="badge bg-default">
+                    Acheter
+                </button>
+            </form>
         </div>
         <div class="bottom-info">
             <h4>{{ cardDeck.card.name }}</h4>
