@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from card.forms import CardForm
 from card.models import Card, Deck, Collection
+from django.http import HttpResponseRedirect
 import json
 import os
 from pprint import pprint
@@ -33,13 +34,19 @@ def create_deck(request):
 			"choice" : 1,
 		})
 
-	cards = Card.objects.filter(Q(classe=request.GET.get("class")) | Q(classe="Neutral"))
+	cards = Card.objects.filter(Q(collection__user_id=request.user.id), Q(classe=request.GET.get("class")) | Q(classe="Neutral"))
 	return render(request,
 	"card/create_deck.html",
 	{
 		"choice" : 0,
 		"cards" : cards
 	})
+
+def delete_deck(request, id_deck):
+	deck_instance = Deck.objects.filter(id=id_deck)
+	deck_instance.delete();
+	return HttpResponseRedirect("/card/show/decks")
+
 
 def create_card(request):
     if request.method == "POST":
