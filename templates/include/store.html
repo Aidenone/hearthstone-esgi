@@ -5,8 +5,9 @@
         <a class="angled-img" href="#!">
             <div class="img img-offset">
                 <img src="{{ cardDeck.card.image }}" alt="">
-                <form action="">
-                    <input type="hidden" name="card" value="{{ cardDeck.id }}">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ cardDeck.id }}">
                     <button class="badge bg-default">
                         Acheter
                     </button>
